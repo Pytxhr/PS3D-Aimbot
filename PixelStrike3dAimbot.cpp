@@ -124,13 +124,13 @@ void AimTowardsClosestEnemy(void *MyPlayer, void *EnemyPlayer, float SDT) {
                 Quaternion targetRotation = Quaternion::LookRotation(directionToTarget);
 
                 // Get the current rotation of our player
-                Quaternion currentRotation = Transform_Get_Rotation(Component_get_transform(me));
+                Quaternion currentRotation = Transform_Get_Rotation(Component_get_transform(MyPlayer));
 
                 // Interpolate smoothly between the current rotation and the target rotation
                 Quaternion smoothedRotation = Quaternion::Slerp(currentRotation, targetRotation, SDT * 50.0f);
 
                 // Set our player's rotation to the smoothed rotation
-                Transform_Set_Rotation(Component_get_transform(me), smoothedRotation);
+                Transform_Set_Rotation(Component_get_transform(MyPlayer), smoothedRotation);
 
             }
         }
